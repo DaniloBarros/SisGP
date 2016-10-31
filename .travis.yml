@@ -1,0 +1,27 @@
+language: ruby
+
+services:
+  - postgresql
+
+before_install: 
+  - cd SisGPWeb
+  - psql -c 'create database travis_ci_test;' -U postgres
+
+  
+script:
+  - bundle exec spring binstub --all
+  - bundle install
+  - bundle exec rake spec
+
+rvm:
+  - 2.2.3
+notifications:
+  email:
+    recipients:
+      - dan.b412@gmail.com
+      - rafael.akiyoshi@gmail.com
+  
+branches:
+  only:
+
+    - master
