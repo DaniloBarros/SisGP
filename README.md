@@ -14,7 +14,7 @@ Ionic Version -> 1.2.4<br/><br/>
 <br/>
 [![Coverage Status](https://coveralls.io/repos/github/DesenhoDeSofwareUNB/SisGP/badge.svg?branch=master)](https://coveralls.io/github/DesenhoDeSofwareUNB/SisGP?branch=master)
 <br/>
-[![Build Status](https://travis-ci.org/DaniloBarros/SisGP.svg?branch=master)]https://travis-ci.org/DaniloBarros/SisGP)
+[![Build Status](https://travis-ci.org/DaniloBarros/SisGP.svg?branch=master)](https://travis-ci.org/DaniloBarros/SisGP)
 
 Anna Martins <br/>
 Rafael Akiyoshi <br/>
