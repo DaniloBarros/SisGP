@@ -1,35 +1,28 @@
 language: ruby
-
 services:
 - postgresql
-
 before_install:
 - psql -c 'create database travis_ci_test;' -U postgres
-  
 script:
 - bundle exec spring binstub --all
 - bundle install
 - bundle exec rake spec
-
-
 rvm:
 - 2.2.3
 notifications:
-
   email:
     recipients:
     - dan.b412@gmail.com
     - rafael.akiyoshi@gmail.com
-
 branches:
   only:
   - master
-
-
 after_success:
 - coveralls
-
-
 deploy:
+  provider: heroku
   api_key:
-    secure: lKjX88IYDljqUq2DxirNRpT4I2QsyTb7ziNye8NjPsCYZOc+Pvz/0y3kXSd0pI7yKNxOzg1TvaUW6roaSwo275OoeBgZZG/Q81Gjb1i5pWRJOUPnGVW9v4As1OkGlGNL6Fkkj1XSpITBdPedjZPyv55hTTLT5/cGNSKtETOrrBGFfeGGLnPaU4KhBbzaBBkJn4dFRKHMmglDQEhCyPy/VzqbaoIr01smBZIo69NUcut8q8i3LaQ+QzYz1Lx28cuVBCSrkmHg/8/WQeq5pPcwQ0IQZjADV+F0xtaoqluSDiqIAfcn9n1jZinPHLIiWw/li52iuOa5L02+PqtGYKF3WcOCNwrChS54Hj4wFaK7U2NT5Z2SB8BghJRNwPQBYZuKdp7x+gL8HKkm1NCxk45Wd6xbvxlFCyDTU5Z7m1ENXQ22W6H15+SrXUBSws7zQZnqyLhJBXaBXWZ6EaogFLKeejLyVK2Zcc6h2RIjCY4fTzcutuL9tvb5pvM/jHyY+ssTObhmAyb31vldKO7l97tGL71xXtegz9odqNxKeaBR44APhQmVOCjcso58tNuS/Q7adCyymvnf34n1zR4dbEdHlyZhm1IWl/k4/SIg7XY8sqfoyc2cm3ehrpKtx5GDiuRPy6u9kaA5KX78ollktzefDLLjTuj9ingQ5j5uQtIkS6g=
+    secure: GfbjMSOBWQNfW35sJW7XM/SR/98SXmlV6jHKipGgKvcE4LBe0ODLa8C7emm/URdxMPC3YFm341M+dddcz3P6/6GGG/6/Ispxt5G8PmKjQyrDgsLG/nNl+fDLsFgQI7r4L55xHm6mBdf4sf58rylaCLh+l26R2uD1/npcaRPRnp8UjjE8wykbqWT7dpZlcHIqDdG2c5PeLxjPgNgdibeWkJFtKY6dSqLczGENwkqwIDYstNoGgKtMOojRLnD3PMC/g5pHeKhSPSShX3IqF+fLBAvSV+CTGGrPG793yk35Dwb6hHaBplEdfyNXig2NzLhluss1b89KJ5ZR0LfLsDA5zT/EudpXuWJSGdxWYfWdKHONuTDlOV6PNPnAKUZoxqhmvLfb+bqz9Y2VSXU3aNvMDtt+m/N1Xv1v/oTcLX4F9XuK6AKfRuOthmWb3XmlhcU5uuiFI5MBBpvK3UxwarOd22q+N/gksmo8lT0cOIJ8clA4qDqa/rZu1052guqkvRkrJDRXDd8011Hkoo3RyNcd2gonEOtcZE/QqAmwWmYVDZLCAd/YNKqagj8MBMvsTDhJrieJetBl4eNMkuE4SKHVEYzoh0S9eLYiakrrVzGLnQJ15bCOnkAI77B4MLjCW6+ZIMSiwMYv8DUXnMz2hdENJoO75eoBSDNYkgctoYX42xk=
+  app: sisgp2
+  on:
+    repo: DaniloBarros/SisGP
